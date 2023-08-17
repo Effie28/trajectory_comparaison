@@ -1,4 +1,3 @@
 # To plot trajectories compared to a reference
-evo_traj tum trajectories/imu_odom_traj1_modified.csv --ref  trajectories/gt_rts_traj1.csv -p --align_origin
-
-evo_traj tum trajectories/icp_odom_traj1_modified.csv --ref  trajectories/gt_gps_traj1_modified.csv -p --align_origin
+evo_traj tum trajectories/icp_odom_traj1.csv --ref  traj1/gt_gps_traj1.csv -p --align_origin
+evo_traj tum trajectories/icp_odom_traj1.csv --ref  traj1/gt_rts_traj1.csv -p --align_origin
