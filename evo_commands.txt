@@ -1,3 +1,12 @@
 # To plot trajectories compared to a reference
-evo_traj tum trajectories/icp_odom_traj1.csv --ref  traj1/gt_gps_traj1.csv -p --align_origin
-evo_traj tum trajectories/icp_odom_traj1.csv --ref  traj1/gt_rts_traj1.csv -p --align_origin
+
+## Generate reconstructed_traj
+python3 scripts/trajectory_generation.py -gps trajectories/gt_gps_traj1.csv -rts trajectories/gt_rts_traj1_timestamp_modified.csv -icp trajectories/icp_odom_traj1_timestamp_modified.csv -ps
+
+## ICP / IMU / Ground Truth comparison w/ alignement
+evo_traj tum output/icp_reconstructed_traj.csv trajectories/imu_odom_traj1_timestamp_modified.csv --ref output/gt_reconstructed_traj.csv -p --align_origin
+
+
+## ICP / Ground Truth comparison
+
+evo_traj tum output/icp_reconstructed_traj.csv --ref output/gt_reconstructed_traj.csv 

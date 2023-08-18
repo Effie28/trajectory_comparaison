@@ -6,7 +6,7 @@ from pathlib import Path
 from datetime import datetime
 BASE_PATH = Path(__file__).absolute().parents[1] 
 
-def main (input_file, ref_file) :
+def main (input_file) :
 
     df = pd.read_csv(BASE_PATH / f'{input_file}.csv', names=["timestamp", "x", "y", "z", "qx", "qy", "qz", "qw"], delimiter= ' ')
     df['timestamp'] = pd.to_datetime(df['timestamp'], unit='s') # Convert to datetime
@@ -20,27 +20,16 @@ def main (input_file, ref_file) :
     
     df.to_csv(BASE_PATH / f'{input_file}_timestamp_modified.csv', index=False, header=False, sep = ' ')
 
-    df_ref = pd.read_csv(BASE_PATH / f'{ref_file}.csv', names=["timestamp", "x", "y", "z", "qx", "qy", "qz", "qw"], delimiter= ' ')
-    
-    plt.figure
-    plt.scatter(df['timestamp'], df['y']-5182375)
-    plt.scatter(df_ref['timestamp'], df_ref['y'])
-
-    plt.show()
-
 def init_argparse():
 
     parser = argparse.ArgumentParser()
     parser.add_argument('-i', '--input',
                         type=str, required=True,
                         help='Name of input file.')
-    parser.add_argument('-r', '--reference',
-                        type=str, required=True,
-                        help='Name of reference file.')
     return parser
 
 if __name__ == '__main__':
 
     parser = init_argparse()
     args = parser.parse_args()
-    main(args.input, args.reference)
+    main(args.input)

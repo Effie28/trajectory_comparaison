@@ -1,0 +1,22 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "trajectory_generation.py",
+            "type": "python",
+            "request": "launch",
+            "program": "/home/effie/repos/trajectory_comparaison/scripts/trajectory_generation.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["-gps", "trajectories/gt_gps_traj1.csv",
+                     "-rts", "trajectories/gt_rts_traj1_timestamp_modified.csv",
+                     "-icp", "trajectories/icp_odom_traj1_timestamp_modified.csv",
+                     "-p", "-a", "-s"
+                    ]
+        },
+        
+    ]
+}
